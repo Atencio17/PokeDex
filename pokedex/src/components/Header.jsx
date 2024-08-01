@@ -27,29 +27,28 @@ const Header = ({ onSearch }) => {
       top={0}
       left={0}
       right={0}
-      translateY={0}
+      backgroundColor="#18181b"
+      zIndex={10}
+      py={[2, 4]} // Ajuste del padding vertical
+      px={[4, 8, 16]} // Ajuste del padding horizontal
+      boxShadow="md" // Sombra para un poco de profundidad
       transitionProperty="transform"
       transitionDuration=".3s"
       transitionTimingFunction="ease-in-out"
-      backgroundColor="#18181b"
-      zIndex={10}
     >
-      <Box color="white" maxWidth="1280px" margin="0 auto" px={[4, 8, 16]}>
+      <Box color="white" maxWidth="1280px" margin="0 auto">
         <HStack
-          px={[4, 8, 16]}
-          py={[2, 4]}
-          justifyContent="space-between"
+          spacing={[4, 8]}
           alignItems="center"
+          justifyContent="space-between"
         >
-          <nav>
-            <HStack spacing={[4, 8]} height="60px" px={4} alignItems="center">
-              <Image src={pokeball} boxSize="40px" />
-            </HStack>
-          </nav>
-          <InputGroup>
+          <HStack spacing={[2, 4]} alignItems="center">
+            <Image src={pokeball} boxSize={["30px", "40px"]} /> {/* Ajuste del tamaño de la imagen */}
+          </HStack>
+          <InputGroup width={["100%", "auto"]} maxWidth="500px"> {/* Ajuste del ancho de InputGroup */}
             <InputLeftElement
               pointerEvents="none"
-              children={<FontAwesomeIcon icon={faSearch} />}
+              children={<FontAwesomeIcon icon={faSearch} color="gray.300" />}
             />
             <Input
               placeholder="Search by number of pokedex..."

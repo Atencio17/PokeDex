@@ -9,7 +9,7 @@ const TypesSection = (props) => {
             .then((res) => res.json())
             .then((data) => {
                 try {
-                    setDescription(data.flavor_text_entries[8].flavor_text)
+                    setDescription(data.flavor_text_entries[0].flavor_text)
                 } catch (error) {
                     setDescription("??????")
                 }

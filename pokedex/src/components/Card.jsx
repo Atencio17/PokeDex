@@ -24,17 +24,26 @@ const PkCard = (props) => {
     const getImageKey = (src) => src;
 
     return (
-        <Card variant='unstyled' bg="#F3F3F7">
+        <Card variant='unstyled' bg="#F3F3F7" p={[1, 2]}>
             <CardHeader>
-                <HStack alignItems="center" justifyContent="center" spacing={28} px={8}>
-                    <Image boxSize={50} src={props.sex === 'm' ? male : female} />
-                    <Image boxSize={50} src={stars} />
+                <HStack
+                    alignItems="center"
+                    justifyContent="center"
+                    spacing={[4, 8]}
+                    px={[2, 4]}
+                >
+                    <Image boxSize={["30px", "40px"]} src={props.sex === 'm' ? male : female} />
+                    <Image boxSize={["30px", "40px"]} src={stars} />
                 </HStack>
             </CardHeader>
             <CardBody>
-                <HStack spacing={16}>
-                    <VStack>
-                        <Skeleton boxSize="150px" isLoaded={loadedImages.front}>
+                <HStack
+                    spacing={[2, 4]}
+                    flexDirection={["column", "row"]}
+                    alignItems="center"
+                >
+                    <VStack spacing={[4, 8]}>
+                        <Skeleton boxSize={["100px", "100px"]} isLoaded={loadedImages.front}>
                             <MotionImage
                                 src={props.sex === 'm' ? props.maleFront : props.femaleFront}
                                 key={getImageKey(props.sex === 'm' ? props.maleFront : props.femaleFront)}
@@ -44,7 +53,7 @@ const PkCard = (props) => {
                                 onLoad={() => handleImageLoad('front')}
                             />
                         </Skeleton>
-                        <Skeleton boxSize="150px" isLoaded={loadedImages.back}>
+                        <Skeleton boxSize={["100px", "100px"]} isLoaded={loadedImages.back}>
                             <MotionImage
                                 src={props.sex === 'm' ? props.maleBack : props.femaleBack}
                                 key={getImageKey(props.sex === 'm' ? props.maleBack : props.femaleBack)}
@@ -55,8 +64,8 @@ const PkCard = (props) => {
                             />
                         </Skeleton>
                     </VStack>
-                    <VStack>
-                        <Skeleton boxSize="150px" isLoaded={loadedImages.shinyFront}>
+                    <VStack spacing={[4, 8]}>
+                        <Skeleton boxSize={["100px", "100px"]} isLoaded={loadedImages.shinyFront}>
                             <MotionImage
                                 src={props.sex === 'm' ? props.maleShinyFront : props.femaleShinyFront}
                                 key={getImageKey(props.sex === 'm' ? props.maleShinyFront : props.femaleShinyFront)}
@@ -66,7 +75,7 @@ const PkCard = (props) => {
                                 onLoad={() => handleImageLoad('shinyFront')}
                             />
                         </Skeleton>
-                        <Skeleton boxSize="150px" isLoaded={loadedImages.shinyBack}>
+                        <Skeleton boxSize={["100px", "100px"]} isLoaded={loadedImages.shinyBack}>
                             <MotionImage
                                 src={props.sex === 'm' ? props.maleShinyBack : props.femaleShinyBack}
                                 key={getImageKey(props.sex === 'm' ? props.maleShinyBack : props.femaleShinyBack)}

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Footer from './components/Footer';
 import { ChakraProvider, HStack, IconButton, Text, Box, VStack, Divider } from "@chakra-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
-import PokemonSection from "./components/PokemonSection"
+import PokemonSection from "./components/PokemonSection";
 import Header from './components/Header';
 import StatsSection from './components/StatsSection';
 import AllStatsSection from './components/AllStatsSection';
@@ -19,9 +19,9 @@ function App() {
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNumber}`)
       .then((res) => res.json())
       .then((data) => {
-        setPokemon(data)
-      })
-  }, [pokemonNumber])
+        setPokemon(data);
+      });
+  }, [pokemonNumber]);
 
   const handleSearch = (searchTerm) => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${searchTerm}`)
@@ -66,7 +66,12 @@ function App() {
       <main className='App'>
         <Header onSearch={handleSearch} />
         <Box mt="90px" />
-        <HStack alignItems="center" justifyContent="center" spacing={20} px={8}>
+        <HStack
+          alignItems="center"
+          justifyContent="center"
+          spacing={[4, 8, 20]} // Espaciado responsive
+          px={[4, 8, 16]} // Padding responsive
+        >
           <IconButton
             icon={<ChevronLeftIcon />}
             onClick={() => {
@@ -75,8 +80,10 @@ function App() {
               }
             }}
             disabled={pokemonNumber === 1}
+            size={['sm', 'md', 'lg']} // Tamaño responsive
           />
-          <PokemonSection pokeImg={pokemon.sprites.front_default}
+          <PokemonSection
+            pokeImg={pokemon.sprites.front_default}
             pokeImgBack={pokemon.sprites.back_default}
             pokeImgFemale={pokemon.sprites.front_female}
             pokeImgBackFemale={pokemon.sprites.back_female}
@@ -84,8 +91,8 @@ function App() {
             pokeImgBackShiny={pokemon.sprites.back_shiny}
             pokeImgShinyFemale={pokemon.sprites.front_shiny_female}
             pokeImgBackShinyFemale={pokemon.sprites.back_shiny_female}
-            pokeName={pokemon.name} />
-
+            pokeName={pokemon.name}
+          />
           <IconButton
             icon={<ChevronRightIcon />}
             onClick={() => {
@@ -94,25 +101,29 @@ function App() {
               }
             }}
             disabled={pokemonNumber === 1025}
+            size={['sm', 'md', 'lg']} // Tamaño responsive
           />
         </HStack>
         <Divider />
         <AllStatsSection>
           <VStack alignItems="center" justifyContent="center">
-            <TypesSection firstType={firstType} secondType={secondType} description={pokemon.species.url} />
+            <TypesSection
+              firstType={firstType}
+              secondType={secondType}
+              description={pokemon.species.url}
+            />
           </VStack>
-
-          <StatsSection hp={pokemon.stats[0].base_stat}
+          <StatsSection
+            hp={pokemon.stats[0].base_stat}
             atk={pokemon.stats[1].base_stat}
             def={pokemon.stats[2].base_stat}
             satk={pokemon.stats[3].base_stat}
             sdef={pokemon.stats[4].base_stat}
-            vel={pokemon.stats[5].base_stat} />
-
+            vel={pokemon.stats[5].base_stat}
+          />
           <VStack alignItems="center" justifyContent="center">
             <MovesSection items={pokemon.moves} />
           </VStack>
-
         </AllStatsSection>
         <Footer />
       </main>
