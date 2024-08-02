@@ -7,10 +7,10 @@ const PokemonSection = (props) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     };
     return (
-        <VStack spacing={12}>
+        <VStack >
             <Heading>{myUpperCase(props.pokeName)}</Heading>
 
-            <Stack direction='row' alignItems="center" spacing={32}>
+            <Stack direction='row' alignItems="center" s>
 
                 <PkCard sex="m" maleFront={props.pokeImg} maleBack={props.pokeImgBack}
                     maleShinyFront={props.pokeImgShiny} maleShinyBack={props.pokeImgBackShiny} />
